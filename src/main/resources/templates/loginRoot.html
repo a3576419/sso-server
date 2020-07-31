@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments ::head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/webjars/Semantic-UI/2.4.1/semantic.css">
+    <link rel="stylesheet" href="/css/diy.css">
+    <title>登录博客管理</title>
+</head>
+<style>
+    body {
+        display: flex;
+        align-items: center; /*定义body的元素垂直居中*/
+        justify-content: center; /*定义body的里的元素水平居中*/
+    }
+</style>
+<body>
+<div class="m-container-small" style="max-width: 30em!important;">
+    <div class="ui container">
+        <div class="ui middle aligned center aligned grid">
+            <div class="column">
+
+                <h2 class="ui teal image header">
+                    <div class="content">
+                        登录博客后台管理
+                    </div>
+                </h2>
+                <form id="form0" class="ui large form" method="post" action="#" th:action="@{/sso/login}">
+                    <input type="hidden" name="redirectUrl" th:value="${redirectUrl}">
+                    <div class="ui segment">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" id="username" name="username" placeholder="用户名">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" id="password" name="password" placeholder="密码">
+                            </div>
+                        </div>
+                        <button class="ui fluid large teal submit button">登录</button>
+                    </div>
+                    <div class="ui error message"></div>
+
+                    <p style="color: red" th:text="${message}" th:if="${not #strings.isEmpty(message)} "></p>
+
+
+                </form>
+                <div class="ui message">
+                    没有账号? <a href="#" th:href="@{/admin/SignUp}">在此创建</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/*<th:block th:replace="_fragments ::script">*/-->
+<script type="text/javascript" src="/webjars/jquery/3.5.1/dist/jquery.js" th:src="@{/webjars/jquery/3.5.1/dist/jquery.js}"></script>
+<script type="text/javascript" src="/webjars/Semantic-UI/2.4.1/semantic.min.js"th:src="@{/webjars/Semantic-UI/2.4.1/semantic.min.js}"></script>
+<!--/*</th:block>*/-->
+<script>
+
+    $('#form0').form({
+        on: 'blur',
+        fields:{
+            password:{
+                identifier:'password',
+                rules:[
+                    {
+                        type:'empty',
+                        prompt : '密码不能为空!'
+                    }
+                ]
+            },
+            username:{
+                identifier:'username',
+                rules:[
+                    {
+                        type:'empty',
+                        prompt : '用户名不能为空'
+                    }
+
+                ]
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments ::head(~{::title})">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/webjars/Semantic-UI/2.4.1/semantic.css">
+    <link rel="stylesheet" href="/css/diy.css">
+    <title>注册</title>
+</head>
+<style>
+    body {
+        display: flex;
+        align-items: center; /*定义body的元素垂直居中*/
+        justify-content: center; /*定义body的里的元素水平居中*/
+    }
+</style>
+<body>
+
+<div class="ui container teal" style="max-width: 30em!important;">
+    <div class="ui segment">
+    <h2>新用户注册</h2>
+    <hr>
+    <form id="form0" class="ui large form" method="post" action="/SignUser">
+        <div class="ui segment">
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="user pencil alternate icon"></i>
+                    <input type="text" name="nickName" placeholder="昵称" th:value="${baseBean.data.nickName}">
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input" >
+                    <i class="user icon"></i>
+                    <input type="text" id="username" name="username" placeholder="用户名" th:value="${baseBean.data.username}">
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" id="password" name="password" placeholder="密码" >
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" id="rePassword" name="rePassword" placeholder="再次输入密码">
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="envelope outline icon"></i>
+                    <input type="email" id="email" name="email" placeholder="邮箱" th:value="${baseBean.data.email}">
+                </div>
+            </div>
+            <button id="SignUser_btn" class="ui fluid large teal button m-margin-button-mini">注册</button>
+            <button type="button" id="back_btn" class="ui fluid large teal button">返回</button>
+        </div>
+        <div class="ui error message"></div>
+<!--        <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)} "></p>-->
+        <div class="ui centered fluid" style="color: red; text-align: center;" th:text="${baseBean.msg}" th:if="${not #strings.isEmpty(baseBean.msg)} "></div>
+    </form>
+<!--    <button type="button" id="SignUser_btn" class="ui fluid large teal button m-margin-button-mini">注册</button>-->
+<!--    <button type="button" id="back_btn" class="ui fluid large teal button">返回</button>-->
+    </div>
+</div>
+
+</body>
+<!--/*/<th:block th:replace="_fragments ::script">/*/-->
+
+<!--/*/</th:block>/*/-->
+<script>
+
+    $('#form0').form({
+        on: 'blur',
+        fields:{
+            nickName:{
+                identifier:'nickName',
+                rules:[
+                    {
+                        type:'empty',
+                        prompt : '昵称不能为空!'
+                    }
+                ]
+            },
+            username:{
+                identifier:'username',
+                rules:[
+                    {
+                        type:'empty',
+                        prompt : '用户名不能为空!'
+                    }
+
+                ]
+            },
+            password:{
+                identifier:'password',
+                rules:[
+                    {
+                        type:'empty',
+                        prompt : '密码不能为空!'
+                    },
+                    {
+                        type: 'minLength[6]',
+                        prompt: '密码不得少于6个字符！'
+                    }
+                ]
+            },
+            rePassword:{
+                identifier:'rePassword',
+                rules:[
+                    {
+                        type:'match[password]',
+                        prompt : '两次输入密码不一致'
+                    }
+
+                ]
+            },
+            email:{
+                identifier:'email',
+                rules:[
+                    {
+                        type:'email',
+                        prompt : '请输入正确的电子邮箱!'
+                    }
+
+                ]
+            }
+        }
+    })
+
+    $('#back_btn').click(function () {
+        location.href='/admin'
+    })
+    // $('#SignUser_btn').click(function () {
+    //     var d = $('#form0').serialize();
+    //     // alert(d)
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '/admin/SignUser',
+    //         data: $('#form0').serialize(),
+    //         dataType: 'JSON',
+    //         success: function (data) {
+    //             location.href='/admin'
+    //
+    //             console.log(data)
+    //         },
+    //         error: function (data) {
+    //             console.log(data)
+    //         }
+    //     })
+    // })
+</script>
+</html>

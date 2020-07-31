@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments ::head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/webjars/Semantic-UI/2.4.1/semantic.css">
+    <link rel="stylesheet" href="/css/diy.css">
+    <title>404</title>
+</head>
+<body>
+<nav th:replace="_fragments ::menu(0)" class="ui inverted attached segment m-padded-tb-mini">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">Blog</h2>
+            <a href="javascript:;" class="nav-item m-mobile-hide item"><i class="home icon"></i>首页</a>
+            <a href="javascript:;" class="nav-item m-mobile-hide item"><i class="idea icon"></i>分类</a>
+            <a href="javascript:;" class="nav-item m-mobile-hide item"><i class="tags icon"></i>标签</a>
+            <a href="javascript:;" class="nav-item m-mobile-hide item"><i class="info icon"></i>关于我</a>
+            <div class="right item m-mobile-hide">
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="javascript:;" id="button" class="ui menu black button icon m-top-right m-pc-hide">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+<br>
+<br>
+<br>
+<br>
+<div class="ui m-container m-padded-tb-maxsize">
+    <div class="ui error message m-padded-tb-maxsize">
+        <h2>404</h2>
+        <p>对不起，你访问的资源不存在</p>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<footer th:replace="_fragments ::footer" class="ui inverted vertical segment m-padded-tb-big">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="/images/wechat.jpg" class="ui rounded image" alt="" style="width:110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="javascript:;" class="item">用户故事(User Story)</a>
+                    <a href="javascript:;" class="item">热门话题</a>
+                    <a href="javascript:;" class="item">热门话题</a>
+                    <a href="javascript:;" class="item">热门话题</a>
+                </div>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">联系我们</h4>
+                <div class="ui inverted link list">
+                    <a href="javascript:;" class="item">Email：3576419@vip.com</a>
+                    <a href="javascript:;" class="item">QQ：357776419</a>
+                    <a href="javascript:;" class="item">wechat：a520xdd</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">Blog</h4>
+                <p class="m-text-spaced m-padded-tb-big m-text-lined">
+                    这是我的个人博客、会分享关于编程、写作、思考相关的任何内容，希望可以给来到这的人有所帮助0.0</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced">Copy Right©2019-2020 Blog Designed by Cuishidong</p>
+    </div>
+
+</footer>
+
+</body>
+</html>

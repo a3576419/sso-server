@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/webjars/Semantic-UI/2.4.1/semantic.css" th:href="@{/webjars/Semantic-UI/2.4.1/semantic.css}">
+    <link rel="stylesheet" href="/css/diy.css" th:href="@{/css/diy.css}">
+    <title th:replace="${title}">后台管理</title>
+</head>
+<body>
+<nav th:fragment="menu(n)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">博客后台管理</h2>
+            <a href="/admin/blogs" th:href="@{/admin/blogs}" class="nav-item m-mobile-hide item" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>博客</a>
+            <a href="/admin/types" th:href="@{/admin/types}" class="nav-item m-mobile-hide item" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
+            <a href="javascript:;" class="nav-item m-mobile-hide item" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>标签</a>
+            <div class="right m-mobile-hide menu">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img src="https://picsum.photos/id/1003/100/100" alt="" class="ui avatar image">
+                        请登录
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="/admin/logout" class="item" th:href="@{/logout}">登出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="javascript:;" id="button" class="ui menu black button icon m-top-right m-pc-hide">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+<div th:fragment="menu2(n)" class="ui attached pointing menu">
+    <div class="ui container">
+        <div class="right menu">
+            <a href="/admin/blogsInput" th:href="@{/admin/blogsInput}" class="item" th:classappend="${n==1}? 'active teal'">发布</a>
+            <a href="/admin/blogs" th:href="@{/admin/blogs}" class="item" th:classappend="${n==2}? 'active teal'">列表</a>
+        </div>
+
+    </div>
+
+</div>
+<!--底部footer-->
+<footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-big">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="/images/wechat.jpg" class="ui rounded image" alt="" style="width:110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="javascript:;" class="item">用户故事(User Story)</a>
+                    <a href="javascript:;" class="item">热门话题</a>
+                    <a href="javascript:;" class="item">热门话题</a>
+                    <a href="javascript:;" class="item">热门话题</a>
+                </div>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">联系我们</h4>
+                <div class="ui inverted link list">
+                    <a href="javascript:;" class="item">Email：3576419@vip.com</a>
+                    <a href="javascript:;" class="item">QQ：357776419</a>
+                    <a href="javascript:;" class="item">wechat：a520xdd</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">Blog</h4>
+                <p class="m-text-spaced m-padded-tb-big m-text-lined">
+                    这是我的个人博客、会分享关于编程、写作、思考相关的任何内容，希望可以给来到这的人有所帮助0.0</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced">Copy Right©2019-2020 Blog Designed by Cuishidong</p>
+    </div>
+
+</footer>
+
+<th:block th:fragment="script">
+    <script type="application/javascript" src="/webjars/jquery/3.5.1/dist/jquery.js" th:src="@{/webjars/jquery/3.5.1/dist/jquery.js}"></script>
+    <script type="application/javascript" src="/webjars/Semantic-UI/2.4.1/semantic.min.js" th:src="@{/webjars/Semantic-UI/2.4.1/semantic.min.js}"></script>
+
+</th:block>
+</body>
+</html>
